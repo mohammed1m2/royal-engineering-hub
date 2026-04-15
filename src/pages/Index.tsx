@@ -1,47 +1,67 @@
 import { Shield, Monitor, Lock, Wifi, Tv, Paintbrush, Wrench, BarChart3, Headphones, Award } from "lucide-react";
 import { Link } from "react-router-dom";
 import SectionLabel from "../components/SectionLabel";
+import AnimatedSection from "../components/AnimatedSection";
+import { useInView } from "@/hooks/useInView";
+import { useCountUp } from "@/hooks/useCountUp";
+
+/* ─── STAT COUNTER ─── */
+const StatItem = ({ target, suffix, label }: { target: number; suffix: string; label: string }) => {
+  const { ref, inView } = useInView();
+  const value = useCountUp(target, inView);
+  return (
+    <div ref={ref}>
+      <div className="text-xl font-extrabold text-gold">{value}{suffix}</div>
+      <div className="text-[11px] text-muted-foreground">{label}</div>
+    </div>
+  );
+};
 
 /* ─── HERO ─── */
 const Hero = () => (
   <section className="py-16 md:py-24">
     <div className="container grid lg:grid-cols-2 gap-12 items-center">
       <div>
-        <div className="inline-flex items-center gap-2 bg-accent/10 text-gold text-xs font-semibold px-4 py-1.5 rounded-full mb-6">
+        <div
+          className="inline-flex items-center gap-2 bg-accent/10 text-gold text-xs font-semibold px-4 py-1.5 rounded-full mb-6"
+          style={{ animation: "fade-slide-up 0.6s ease-out both" }}
+        >
           <Shield size={14} /> 4× ISO Certified · Established Kuwait 2007
         </div>
-        <h1 className="text-4xl md:text-5xl lg:text-[3.25rem] leading-tight mb-5">
+        <h1
+          className="text-4xl md:text-5xl lg:text-[3.25rem] leading-tight mb-5"
+          style={{ animation: "fade-slide-up 0.7s ease-out 0.1s both" }}
+        >
           Kuwait's Most Trusted Integrated Engineering Partner
         </h1>
-        <p className="text-muted-foreground mb-8 max-w-xl leading-relaxed">
+        <p
+          className="text-muted-foreground mb-8 max-w-xl leading-relaxed"
+          style={{ animation: "fade-slide-up 0.7s ease-out 0.2s both" }}
+        >
           Security &amp; Safety · Infrastructure · Audio Visual · Fit-Out · Managed Services · PMO · Maintenance — all under one roof since 2007.
         </p>
-        <div className="flex flex-wrap gap-3 mb-10">
-          <Link to="/contact" className="bg-royal text-primary-foreground text-sm font-semibold px-6 py-3 rounded-[9px] hover:opacity-90 transition-opacity">
+        <div
+          className="flex flex-wrap gap-3 mb-10"
+          style={{ animation: "fade-slide-up 0.7s ease-out 0.3s both" }}
+        >
+          <Link to="/contact" className="btn-hover bg-royal text-primary-foreground text-sm font-semibold px-6 py-3 rounded-[9px] hover:opacity-90 transition-opacity">
             Request Free Consultation
           </Link>
-          <Link to="/portfolio" className="border border-border text-foreground text-sm font-semibold px-6 py-3 rounded-[9px] hover:bg-secondary transition-colors">
+          <Link to="/portfolio" className="btn-hover border border-border text-foreground text-sm font-semibold px-6 py-3 rounded-[9px] hover:bg-secondary transition-colors">
             View Portfolio →
           </Link>
         </div>
         <div className="border-t border-border pt-5 flex flex-wrap gap-6 text-center">
-          {[
-            ["18+", "Years"],
-            ["200+", "Projects"],
-            ["7", "Divisions"],
-            ["30+", "Partners"],
-            ["4", "ISO Certs"],
-          ].map(([n, l]) => (
-            <div key={l}>
-              <div className="text-xl font-extrabold text-gold">{n}</div>
-              <div className="text-[11px] text-muted-foreground">{l}</div>
-            </div>
-          ))}
+          <StatItem target={18} suffix="+" label="Years" />
+          <StatItem target={200} suffix="+" label="Projects" />
+          <StatItem target={7} suffix="" label="Divisions" />
+          <StatItem target={30} suffix="+" label="Partners" />
+          <StatItem target={4} suffix="" label="ISO Certs" />
         </div>
       </div>
 
       {/* Control Room Visual */}
-      <div className="bg-[#0d0a18] rounded-xl p-6 relative overflow-hidden">
+      <div className="bg-[#0d0a18] rounded-xl p-6 relative overflow-hidden" style={{ animation: "fade-slide-up 0.8s ease-out 0.2s both" }}>
         <div className="flex items-center justify-between mb-4">
           <span className="text-[10px] tracking-widest uppercase text-primary-foreground/50">Control Room · Live</span>
           <span className="flex items-center gap-1.5 text-[10px] text-green-400">
@@ -52,8 +72,11 @@ const Hero = () => (
           {Array.from({ length: 8 }).map((_, i) => (
             <div
               key={i}
-              className="aspect-video rounded-md"
-              style={{ backgroundColor: i % 3 === 0 ? "#c8a84b22" : "#3c003c44" }}
+              className="aspect-video rounded-md animate-tile-glow"
+              style={{
+                backgroundColor: i % 3 === 0 ? "#c8a84b22" : "#3c003c44",
+                animationDelay: `${i * 0.4}s`,
+              }}
             />
           ))}
         </div>
@@ -135,23 +158,24 @@ const divisions = [
 const Divisions = () => (
   <section className="py-20">
     <div className="container">
-      <SectionLabel>Our Divisions</SectionLabel>
-      <h2 className="text-3xl md:text-4xl mb-10">Seven Specializations. One Company.</h2>
+      <AnimatedSection><SectionLabel>Our Divisions</SectionLabel></AnimatedSection>
+      <AnimatedSection delay={100}><h2 className="text-3xl md:text-4xl mb-10">Seven Specializations. One Company.</h2></AnimatedSection>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {divisions.map((d) => (
-          <div
-            key={d.name}
-            className={`group p-6 rounded-xl border transition-all cursor-pointer ${
-              d.featured
-                ? "border-accent bg-accent/5 hover:bg-accent/10"
-                : "border-border hover:border-primary hover:bg-primary/5"
-            }`}
-          >
-            <d.icon size={28} className={d.featured ? "text-gold mb-3" : "text-primary mb-3"} strokeWidth={1.5} />
-            <h3 className="font-bold mb-1">{d.name}</h3>
-            <p className="text-sm text-muted-foreground">{d.desc}</p>
-            {d.featured && <span className="inline-block mt-2 text-[10px] font-bold tracking-widest uppercase text-gold">Featured</span>}
-          </div>
+        {divisions.map((d, i) => (
+          <AnimatedSection key={d.name} delay={i * 100}>
+            <div
+              className={`group p-6 rounded-xl border transition-all cursor-pointer ${
+                d.featured
+                  ? "border-accent bg-accent/5 hover:bg-accent/10"
+                  : "border-border hover:border-primary hover:bg-primary/5"
+              }`}
+            >
+              <d.icon size={28} className={d.featured ? "text-gold mb-3" : "text-primary mb-3"} strokeWidth={1.5} />
+              <h3 className="font-bold mb-1">{d.name}</h3>
+              <p className="text-sm text-muted-foreground">{d.desc}</p>
+              {d.featured && <span className="inline-block mt-2 text-[10px] font-bold tracking-widest uppercase text-gold">Featured</span>}
+            </div>
+          </AnimatedSection>
         ))}
       </div>
     </div>
@@ -169,12 +193,11 @@ const clients = [
 const ControlRoomFeature = () => (
   <section className="py-20">
     <div className="container grid lg:grid-cols-2 gap-0 rounded-xl overflow-hidden">
-      {/* Left visual */}
       <div className="bg-[#0d0a18] p-10 flex flex-col justify-center relative min-h-[360px]">
         <div className="absolute top-4 left-4 bg-royal text-gold text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Flagship</div>
         <div className="grid grid-cols-3 gap-2 mb-6">
           {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="aspect-video rounded bg-accent/10" />
+            <div key={i} className="aspect-video rounded bg-accent/10 animate-tile-glow" style={{ animationDelay: `${i * 0.5}s` }} />
           ))}
         </div>
         <div className="flex gap-2">
@@ -186,24 +209,29 @@ const ControlRoomFeature = () => (
           Ministry of Commerce · 10 Days
         </div>
       </div>
-      {/* Right info */}
       <div className="bg-background p-10 flex flex-col justify-center border border-l-0 border-border rounded-r-xl">
-        <SectionLabel>Control Rooms</SectionLabel>
-        <h2 className="text-3xl font-extrabold mb-4">Mission-Critical Command Centers</h2>
-        <p className="text-muted-foreground mb-6 leading-relaxed">
-          We design, build, and maintain ISO-standard control rooms for government, oil &amp; gas, and enterprise clients — delivered in record time.
-        </p>
-        <ul className="space-y-3 mb-8">
-          {clients.map(([name, tag]) => (
-            <li key={name} className="flex items-start gap-2 text-sm">
-              <span className="w-2 h-2 rounded-full bg-accent mt-1.5 shrink-0" />
-              <span>{name} <span className="text-muted-foreground">({tag})</span></span>
-            </li>
-          ))}
-        </ul>
-        <Link to="/portfolio" className="inline-flex bg-accent text-accent-foreground text-sm font-semibold px-6 py-3 rounded-[9px] hover:opacity-90 transition-opacity self-start">
-          See All Projects →
-        </Link>
+        <AnimatedSection><SectionLabel>Control Rooms</SectionLabel></AnimatedSection>
+        <AnimatedSection delay={100}><h2 className="text-3xl font-extrabold mb-4">Mission-Critical Command Centers</h2></AnimatedSection>
+        <AnimatedSection delay={200}>
+          <p className="text-muted-foreground mb-6 leading-relaxed">
+            We design, build, and maintain ISO-standard control rooms for government, oil &amp; gas, and enterprise clients — delivered in record time.
+          </p>
+        </AnimatedSection>
+        <AnimatedSection delay={300}>
+          <ul className="space-y-3 mb-8">
+            {clients.map(([name, tag]) => (
+              <li key={name} className="flex items-start gap-2 text-sm">
+                <span className="w-2 h-2 rounded-full bg-accent mt-1.5 shrink-0" />
+                <span>{name} <span className="text-muted-foreground">({tag})</span></span>
+              </li>
+            ))}
+          </ul>
+        </AnimatedSection>
+        <AnimatedSection delay={400}>
+          <Link to="/portfolio" className="btn-hover inline-flex bg-accent text-accent-foreground text-sm font-semibold px-6 py-3 rounded-[9px] hover:opacity-90 transition-opacity self-start">
+            See All Projects →
+          </Link>
+        </AnimatedSection>
       </div>
     </div>
   </section>
@@ -222,21 +250,23 @@ const projects = [
 const PortfolioPreview = () => (
   <section className="bg-surface py-20">
     <div className="container">
-      <SectionLabel>Our Work</SectionLabel>
-      <h2 className="text-3xl md:text-4xl mb-10">Featured Projects</h2>
+      <AnimatedSection><SectionLabel>Our Work</SectionLabel></AnimatedSection>
+      <AnimatedSection delay={100}><h2 className="text-3xl md:text-4xl mb-10">Featured Projects</h2></AnimatedSection>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {projects.map((p) => (
-          <div key={p.name} className="group rounded-xl overflow-hidden bg-background border border-border hover:shadow-md transition-shadow">
-            <div className="relative h-44" style={{ backgroundColor: p.color }}>
-              <span className="absolute bottom-3 left-3 bg-royal text-gold text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                {p.sector}
-              </span>
+        {projects.map((p, i) => (
+          <AnimatedSection key={p.name} delay={i * 100}>
+            <div className="group rounded-xl overflow-hidden bg-background border border-border hover:shadow-md transition-shadow">
+              <div className="relative h-44" style={{ backgroundColor: p.color }}>
+                <span className="absolute bottom-3 left-3 bg-royal text-gold text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                  {p.sector}
+                </span>
+              </div>
+              <div className="p-5">
+                <h3 className="font-bold mb-1">{p.name}</h3>
+                <p className="text-sm text-muted-foreground">{p.scope}</p>
+              </div>
             </div>
-            <div className="p-5">
-              <h3 className="font-bold mb-1">{p.name}</h3>
-              <p className="text-sm text-muted-foreground">{p.scope}</p>
-            </div>
-          </div>
+          </AnimatedSection>
         ))}
       </div>
     </div>
@@ -250,16 +280,18 @@ const regularClients = ["Ministry of Commerce", "Australian University", "Warba 
 const Clients = () => (
   <section className="py-20">
     <div className="container">
-      <SectionLabel>Our Clients</SectionLabel>
-      <h2 className="text-3xl md:text-4xl mb-8">Trusted by Kuwait's Leading Organizations</h2>
-      <div className="flex flex-wrap gap-3">
-        {vipClients.map((c) => (
-          <span key={c} className="bg-royal text-gold text-sm font-semibold px-4 py-2 rounded-full">{c}</span>
-        ))}
-        {regularClients.map((c) => (
-          <span key={c} className="border border-border text-foreground text-sm px-4 py-2 rounded-full">{c}</span>
-        ))}
-      </div>
+      <AnimatedSection><SectionLabel>Our Clients</SectionLabel></AnimatedSection>
+      <AnimatedSection delay={100}><h2 className="text-3xl md:text-4xl mb-8">Trusted by Kuwait's Leading Organizations</h2></AnimatedSection>
+      <AnimatedSection delay={200}>
+        <div className="flex flex-wrap gap-3">
+          {vipClients.map((c) => (
+            <span key={c} className="bg-royal text-gold text-sm font-semibold px-4 py-2 rounded-full">{c}</span>
+          ))}
+          {regularClients.map((c) => (
+            <span key={c} className="border border-border text-foreground text-sm px-4 py-2 rounded-full">{c}</span>
+          ))}
+        </div>
+      </AnimatedSection>
     </div>
   </section>
 );
@@ -268,7 +300,6 @@ const Clients = () => (
 const ContactCTA = () => (
   <section className="py-0">
     <div className="container grid lg:grid-cols-2 gap-0">
-      {/* Left form */}
       <div className="bg-royal p-10 lg:p-14 rounded-l-xl lg:rounded-l-xl">
         <h2 className="text-3xl font-extrabold text-primary-foreground mb-1">
           Let's Build <span className="text-gold">Something Great</span>
@@ -281,33 +312,23 @@ const ContactCTA = () => (
           </div>
           <input placeholder="Email" type="email" className="w-full bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/30 text-sm px-4 py-3 rounded-lg outline-none focus:ring-1 focus:ring-accent" />
           <textarea rows={4} placeholder="Tell us about your project..." className="w-full bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/30 text-sm px-4 py-3 rounded-lg outline-none resize-none focus:ring-1 focus:ring-accent" />
-          <button type="submit" className="bg-accent text-accent-foreground font-semibold text-sm px-8 py-3 rounded-[9px] hover:opacity-90 transition-opacity">
+          <button type="submit" className="btn-hover bg-accent text-accent-foreground font-semibold text-sm px-8 py-3 rounded-[9px] hover:opacity-90 transition-opacity">
             Send Message
           </button>
         </form>
       </div>
-      {/* Right info */}
       <div className="bg-background border border-l-0 border-border p-10 lg:p-14 rounded-r-xl flex flex-col justify-center">
         <h3 className="font-extrabold text-xl mb-6">Get in Touch</h3>
         <div className="space-y-4 text-sm">
-          <div>
-            <div className="font-semibold mb-1">Address</div>
-            <p className="text-muted-foreground">Kuwait City, Safat 13122</p>
-          </div>
-          <div>
-            <div className="font-semibold mb-1">Phone</div>
-            <p className="text-muted-foreground">+965 2228 1292</p>
-          </div>
-          <div>
-            <div className="font-semibold mb-1">Email</div>
-            <p className="text-muted-foreground">info@royaleng-me.com</p>
-          </div>
+          <div><div className="font-semibold mb-1">Address</div><p className="text-muted-foreground">Kuwait City, Safat 13122</p></div>
+          <div><div className="font-semibold mb-1">Phone</div><p className="text-muted-foreground">+965 2228 1292</p></div>
+          <div><div className="font-semibold mb-1">Email</div><p className="text-muted-foreground">info@royaleng-me.com</p></div>
         </div>
         <a
           href="https://wa.me/96522281292"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 mt-8 bg-[#22c55e] text-background font-semibold text-sm px-6 py-3 rounded-[9px] hover:opacity-90 transition-opacity self-start"
+          className="btn-hover inline-flex items-center gap-2 mt-8 bg-[#22c55e] text-background font-semibold text-sm px-6 py-3 rounded-[9px] hover:opacity-90 transition-opacity self-start"
         >
           WhatsApp Us
         </a>
