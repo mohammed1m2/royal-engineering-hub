@@ -91,3 +91,22 @@
 .animate-pulse-dot {
   animation: pulse-dot 2s ease-in-out infinite;
 }
+
+/* Control room tile glow */
+@keyframes tile-glow {
+  0%, 100% { opacity: 0.6; box-shadow: 0 0 0 0 transparent; }
+  50% { opacity: 1; box-shadow: 0 0 12px 2px hsl(43 52% 54% / 0.15); }
+}
+.animate-tile-glow {
+  animation: tile-glow 3s ease-in-out infinite;
+}
+
+/* Button hover scale */
+@layer utilities {
+  .btn-hover {
+    @apply transition-all duration-200;
+  }
+  .btn-hover:hover {
+    transform: scale(1.03);
+  }
+}
