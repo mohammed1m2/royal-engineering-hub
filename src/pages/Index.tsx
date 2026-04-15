@@ -1,16 +1,335 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Shield, Monitor, Lock, Wifi, Tv, Paintbrush, Wrench, BarChart3, Headphones, Award } from "lucide-react";
+import { Link } from "react-router-dom";
+import SectionLabel from "../components/SectionLabel";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
-  return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+/* ─── HERO ─── */
+const Hero = () => (
+  <section className="py-16 md:py-24">
+    <div className="container grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <div className="inline-flex items-center gap-2 bg-accent/10 text-gold text-xs font-semibold px-4 py-1.5 rounded-full mb-6">
+          <Shield size={14} /> 4× ISO Certified · Established Kuwait 2007
+        </div>
+        <h1 className="text-4xl md:text-5xl lg:text-[3.25rem] leading-tight mb-5">
+          Kuwait's Most Trusted Integrated Engineering Partner
+        </h1>
+        <p className="text-muted-foreground mb-8 max-w-xl leading-relaxed">
+          Security &amp; Safety · Infrastructure · Audio Visual · Fit-Out · Managed Services · PMO · Maintenance — all under one roof since 2007.
+        </p>
+        <div className="flex flex-wrap gap-3 mb-10">
+          <Link to="/contact" className="bg-royal text-primary-foreground text-sm font-semibold px-6 py-3 rounded-[9px] hover:opacity-90 transition-opacity">
+            Request Free Consultation
+          </Link>
+          <Link to="/portfolio" className="border border-border text-foreground text-sm font-semibold px-6 py-3 rounded-[9px] hover:bg-secondary transition-colors">
+            View Portfolio →
+          </Link>
+        </div>
+        <div className="border-t border-border pt-5 flex flex-wrap gap-6 text-center">
+          {[
+            ["18+", "Years"],
+            ["200+", "Projects"],
+            ["7", "Divisions"],
+            ["30+", "Partners"],
+            ["4", "ISO Certs"],
+          ].map(([n, l]) => (
+            <div key={l}>
+              <div className="text-xl font-extrabold text-gold">{n}</div>
+              <div className="text-[11px] text-muted-foreground">{l}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Control Room Visual */}
+      <div className="bg-[#0d0a18] rounded-xl p-6 relative overflow-hidden">
+        <div className="flex items-center justify-between mb-4">
+          <span className="text-[10px] tracking-widest uppercase text-primary-foreground/50">Control Room · Live</span>
+          <span className="flex items-center gap-1.5 text-[10px] text-green-400">
+            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse-dot" /> Systems Online
+          </span>
+        </div>
+        <div className="grid grid-cols-4 gap-2 mb-4">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div
+              key={i}
+              className="aspect-video rounded-md"
+              style={{ backgroundColor: i % 3 === 0 ? "#c8a84b22" : "#3c003c44" }}
+            />
+          ))}
+        </div>
+        <div className="flex gap-2">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="h-6 flex-1 rounded bg-primary-foreground/10" />
+          ))}
+        </div>
+      </div>
     </div>
-  );
-};
+  </section>
+);
 
-const Index = PlaceholderIndex;
+/* ─── ISO BAR ─── */
+const isos = [
+  ["ISO 9001", "Quality Management"],
+  ["ISO/IEC 27001", "Info Security"],
+  ["ISO 45001", "Health & Safety"],
+  ["ISO 14001", "Environment"],
+];
 
-export default Index;
+const IsoBar = () => (
+  <section className="bg-royal py-4">
+    <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="flex flex-wrap items-center gap-6">
+        {isos.map(([code, label]) => (
+          <div key={code} className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full border-2 border-accent flex items-center justify-center">
+              <Award size={14} className="text-gold" />
+            </div>
+            <div>
+              <div className="text-xs font-bold text-primary-foreground">{code}</div>
+              <div className="text-[10px] text-primary-foreground/50">{label}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="text-[10px] text-primary-foreground/40 tracking-wide">CAPT · CAIT · Category 4 Electrical</div>
+    </div>
+  </section>
+);
+
+/* ─── PARTNERS MARQUEE ─── */
+const partners = [
+  ["HIKVISION","#c8a84b"],["Avigilon","#3c003c"],["cisco","#049fd9"],["Honeywell","#cc0000"],
+  ["IBM","#1f70c1"],["Dell EMC","#007db8"],["AXIS","#3c003c"],["Lenovo","#e2231a"],
+  ["Genetec","#009a44"],["Johnson Controls","#cc0000"],["Huawei","#cf0a2c"],["AJAX","#111111"],
+  ["HID","#e2231a"],["Milestone","#006fcf"],["Gallagher","#c8a84b"],["Bosch","#444444"],
+  ["TP-Link","#e87722"],["Garrett","#3c003c"],["WatchNET","#c8a84b"],["PELCO","#005baa"],
+];
+
+const PartnersMarquee = () => (
+  <section className="bg-surface py-8">
+    <div className="container mb-4">
+      <p className="text-[10px] tracking-widest uppercase text-muted-foreground font-semibold text-center">Certified Technology Partners</p>
+    </div>
+    <div className="marquee-fade overflow-hidden">
+      <div className="flex animate-marquee w-max">
+        {[...partners, ...partners].map(([name, color], i) => (
+          <span key={i} className="mx-6 text-sm font-bold whitespace-nowrap" style={{ color }}>{name}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+/* ─── DIVISIONS ─── */
+const divisions = [
+  { icon: Lock, name: "Security & Safety", desc: "CCTV · Access · Screening" },
+  { icon: Wifi, name: "Infrastructure", desc: "Cabling · Networks · Data Centers" },
+  { icon: Tv, name: "Audio Visual", desc: "AV Systems · Signage · IPTV" },
+  { icon: Paintbrush, name: "Fit-Out", desc: "Interior Design · Turnkey Build" },
+  { icon: Wrench, name: "Managed Services", desc: "MEP · Operations · FM" },
+  { icon: BarChart3, name: "PMO", desc: "PMP Certified · Governance" },
+  { icon: Headphones, name: "Maintenance", desc: "24/7 IT & Security Support" },
+  { icon: Monitor, name: "Control Rooms", desc: "ISO-Standard Command Centers", featured: true },
+];
+
+const Divisions = () => (
+  <section className="py-20">
+    <div className="container">
+      <SectionLabel>Our Divisions</SectionLabel>
+      <h2 className="text-3xl md:text-4xl mb-10">Seven Specializations. One Company.</h2>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {divisions.map((d) => (
+          <div
+            key={d.name}
+            className={`group p-6 rounded-xl border transition-all cursor-pointer ${
+              d.featured
+                ? "border-accent bg-accent/5 hover:bg-accent/10"
+                : "border-border hover:border-primary hover:bg-primary/5"
+            }`}
+          >
+            <d.icon size={28} className={d.featured ? "text-gold mb-3" : "text-primary mb-3"} strokeWidth={1.5} />
+            <h3 className="font-bold mb-1">{d.name}</h3>
+            <p className="text-sm text-muted-foreground">{d.desc}</p>
+            {d.featured && <span className="inline-block mt-2 text-[10px] font-bold tracking-widest uppercase text-gold">Featured</span>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+/* ─── CONTROL ROOM FEATURE ─── */
+const clients = [
+  ["Jaber Al-Ahmad International Stadium", "Public Events"],
+  ["Kuwait National Guard", "Government"],
+  ["Environment Public Authority", "Government"],
+  ["Ministry of Commerce & Industry", "10-Day Delivery"],
+];
+
+const ControlRoomFeature = () => (
+  <section className="py-20">
+    <div className="container grid lg:grid-cols-2 gap-0 rounded-xl overflow-hidden">
+      {/* Left visual */}
+      <div className="bg-[#0d0a18] p-10 flex flex-col justify-center relative min-h-[360px]">
+        <div className="absolute top-4 left-4 bg-royal text-gold text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Flagship</div>
+        <div className="grid grid-cols-3 gap-2 mb-6">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="aspect-video rounded bg-accent/10" />
+          ))}
+        </div>
+        <div className="flex gap-2">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div key={i} className="h-5 flex-1 rounded bg-primary-foreground/10" />
+          ))}
+        </div>
+        <div className="absolute bottom-4 right-4 bg-accent/20 text-gold text-[10px] font-semibold px-3 py-1 rounded-full">
+          Ministry of Commerce · 10 Days
+        </div>
+      </div>
+      {/* Right info */}
+      <div className="bg-background p-10 flex flex-col justify-center border border-l-0 border-border rounded-r-xl">
+        <SectionLabel>Control Rooms</SectionLabel>
+        <h2 className="text-3xl font-extrabold mb-4">Mission-Critical Command Centers</h2>
+        <p className="text-muted-foreground mb-6 leading-relaxed">
+          We design, build, and maintain ISO-standard control rooms for government, oil &amp; gas, and enterprise clients — delivered in record time.
+        </p>
+        <ul className="space-y-3 mb-8">
+          {clients.map(([name, tag]) => (
+            <li key={name} className="flex items-start gap-2 text-sm">
+              <span className="w-2 h-2 rounded-full bg-accent mt-1.5 shrink-0" />
+              <span>{name} <span className="text-muted-foreground">({tag})</span></span>
+            </li>
+          ))}
+        </ul>
+        <Link to="/portfolio" className="inline-flex bg-accent text-accent-foreground text-sm font-semibold px-6 py-3 rounded-[9px] hover:opacity-90 transition-opacity self-start">
+          See All Projects →
+        </Link>
+      </div>
+    </div>
+  </section>
+);
+
+/* ─── PORTFOLIO PREVIEW ─── */
+const projects = [
+  { name: "Jaber Al-Ahmad Stadium", scope: "Control Room · AV · Security", sector: "GOVERNMENT", color: "#1a365d" },
+  { name: "Kuwait Oil Company", scope: "Access Control · Security · 5 Days", sector: "OIL & GAS", color: "#4a2510" },
+  { name: "Kuwait Supply Company", scope: "Interior Fit-Out · Full Turnkey", sector: "FIT-OUT", color: "#2d3748" },
+  { name: "Kuwait National Guard", scope: "Control Room · Fit-Out · Security", sector: "GOVERNMENT", color: "#1a365d" },
+  { name: "Central Bank of Kuwait", scope: "Security · Infrastructure · Low Voltage", sector: "BANKING", color: "#1c4532" },
+  { name: "Australian University", scope: "Security · AV · Infrastructure", sector: "EDUCATION", color: "#553c14" },
+];
+
+const PortfolioPreview = () => (
+  <section className="bg-surface py-20">
+    <div className="container">
+      <SectionLabel>Our Work</SectionLabel>
+      <h2 className="text-3xl md:text-4xl mb-10">Featured Projects</h2>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {projects.map((p) => (
+          <div key={p.name} className="group rounded-xl overflow-hidden bg-background border border-border hover:shadow-md transition-shadow">
+            <div className="relative h-44" style={{ backgroundColor: p.color }}>
+              <span className="absolute bottom-3 left-3 bg-royal text-gold text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                {p.sector}
+              </span>
+            </div>
+            <div className="p-5">
+              <h3 className="font-bold mb-1">{p.name}</h3>
+              <p className="text-sm text-muted-foreground">{p.scope}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+/* ─── CLIENTS ─── */
+const vipClients = ["Kuwait Oil Company", "Central Bank of Kuwait", "Kuwait National Guard", "Jaber Al-Ahmad Stadium"];
+const regularClients = ["Ministry of Commerce", "Australian University", "Warba Bank", "Schlumberger", "Agility", "Al-Futtaim", "VIVA", "Environment Authority"];
+
+const Clients = () => (
+  <section className="py-20">
+    <div className="container">
+      <SectionLabel>Our Clients</SectionLabel>
+      <h2 className="text-3xl md:text-4xl mb-8">Trusted by Kuwait's Leading Organizations</h2>
+      <div className="flex flex-wrap gap-3">
+        {vipClients.map((c) => (
+          <span key={c} className="bg-royal text-gold text-sm font-semibold px-4 py-2 rounded-full">{c}</span>
+        ))}
+        {regularClients.map((c) => (
+          <span key={c} className="border border-border text-foreground text-sm px-4 py-2 rounded-full">{c}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+/* ─── CONTACT CTA ─── */
+const ContactCTA = () => (
+  <section className="py-0">
+    <div className="container grid lg:grid-cols-2 gap-0">
+      {/* Left form */}
+      <div className="bg-royal p-10 lg:p-14 rounded-l-xl lg:rounded-l-xl">
+        <h2 className="text-3xl font-extrabold text-primary-foreground mb-1">
+          Let's Build <span className="text-gold">Something Great</span>
+        </h2>
+        <p className="text-primary-foreground/60 text-sm mb-8">Tell us about your project and we'll get back to you within 24 hours.</p>
+        <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+          <div className="grid sm:grid-cols-2 gap-4">
+            <input placeholder="Your Name" className="w-full bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/30 text-sm px-4 py-3 rounded-lg outline-none focus:ring-1 focus:ring-accent" />
+            <input placeholder="Company" className="w-full bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/30 text-sm px-4 py-3 rounded-lg outline-none focus:ring-1 focus:ring-accent" />
+          </div>
+          <input placeholder="Email" type="email" className="w-full bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/30 text-sm px-4 py-3 rounded-lg outline-none focus:ring-1 focus:ring-accent" />
+          <textarea rows={4} placeholder="Tell us about your project..." className="w-full bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/30 text-sm px-4 py-3 rounded-lg outline-none resize-none focus:ring-1 focus:ring-accent" />
+          <button type="submit" className="bg-accent text-accent-foreground font-semibold text-sm px-8 py-3 rounded-[9px] hover:opacity-90 transition-opacity">
+            Send Message
+          </button>
+        </form>
+      </div>
+      {/* Right info */}
+      <div className="bg-background border border-l-0 border-border p-10 lg:p-14 rounded-r-xl flex flex-col justify-center">
+        <h3 className="font-extrabold text-xl mb-6">Get in Touch</h3>
+        <div className="space-y-4 text-sm">
+          <div>
+            <div className="font-semibold mb-1">Address</div>
+            <p className="text-muted-foreground">Kuwait City, Safat 13122</p>
+          </div>
+          <div>
+            <div className="font-semibold mb-1">Phone</div>
+            <p className="text-muted-foreground">+965 2228 1292</p>
+          </div>
+          <div>
+            <div className="font-semibold mb-1">Email</div>
+            <p className="text-muted-foreground">info@royaleng-me.com</p>
+          </div>
+        </div>
+        <a
+          href="https://wa.me/96522281292"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 mt-8 bg-[#22c55e] text-background font-semibold text-sm px-6 py-3 rounded-[9px] hover:opacity-90 transition-opacity self-start"
+        >
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </section>
+);
+
+/* ─── PAGE ─── */
+const HomePage = () => (
+  <>
+    <Hero />
+    <IsoBar />
+    <PartnersMarquee />
+    <Divisions />
+    <ControlRoomFeature />
+    <PortfolioPreview />
+    <Clients />
+    <div className="py-20">
+      <ContactCTA />
+    </div>
+  </>
+);
+
+export default HomePage;
