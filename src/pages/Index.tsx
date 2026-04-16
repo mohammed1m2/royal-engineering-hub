@@ -44,14 +44,17 @@ const Hero = () => (
           className="flex flex-wrap gap-3 mb-10"
           style={{ animation: "fade-slide-up 0.7s ease-out 0.3s both" }}
         >
-          <Link to="/contact" className="btn-hover bg-royal text-primary-foreground text-sm font-semibold px-6 py-3 rounded-[9px] hover:opacity-90 transition-opacity">
+          <Link to="/contact" className="btn-hover bg-royal text-primary-foreground text-sm font-semibold px-6 py-3 rounded-[9px]">
             Request Free Consultation
           </Link>
           <Link to="/portfolio" className="btn-hover border border-border text-foreground text-sm font-semibold px-6 py-3 rounded-[9px] hover:bg-secondary transition-colors">
             View Portfolio →
           </Link>
         </div>
-        <div className="border-t border-border pt-5 flex flex-wrap gap-6 text-center">
+        <div
+          className="border-t border-border pt-5 flex flex-wrap gap-6 text-center"
+          style={{ animation: "fade-slide-up 0.7s ease-out 0.4s both" }}
+        >
           <StatItem target={18} suffix="+" label="Years" />
           <StatItem target={200} suffix="+" label="Projects" />
           <StatItem target={8} suffix="" label="Divisions" />
@@ -102,8 +105,12 @@ const IsoBar = () => (
   <section className="bg-royal py-4">
     <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
       <div className="flex flex-wrap items-center gap-6">
-        {isos.map(([code, label]) => (
-          <div key={code} className="flex items-center gap-2">
+        {isos.map(([code, label], i) => (
+          <div
+            key={code}
+            className="flex items-center gap-2"
+            style={{ animation: `fade-slide-up 0.5s ease-out ${i * 0.1}s both` }}
+          >
             <div className="w-8 h-8 rounded-full border-2 border-accent flex items-center justify-center">
               <Award size={14} className="text-gold" />
             </div>
@@ -134,7 +141,7 @@ const PartnersMarquee = () => (
       <p className="text-[10px] tracking-widest uppercase text-muted-foreground font-semibold text-center">Certified Technology Partners</p>
     </div>
     <div className="marquee-fade overflow-hidden">
-      <div className="flex animate-marquee w-max">
+      <div className="marquee-track">
         {[...partners, ...partners].map(([name, color], i) => (
           <span key={i} className="mx-6 text-sm font-bold whitespace-nowrap" style={{ color }}>{name}</span>
         ))}
@@ -163,7 +170,7 @@ const Divisions = () => (
       <AnimatedSection delay={100}><h2 className="text-3xl md:text-4xl mb-10">Eight Specializations. One Company.</h2></AnimatedSection>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {divisions.map((d, i) => (
-          <AnimatedSection key={d.name} delay={i * 100}>
+          <AnimatedSection key={d.name} delay={i * 80}>
             <div
               className={`group p-6 rounded-xl border transition-all cursor-pointer ${
                 d.featured
@@ -256,7 +263,7 @@ const PortfolioPreview = () => (
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {projects.map((p, i) => (
           <AnimatedSection key={p.name} delay={i * 100}>
-            <div className="group rounded-xl overflow-hidden bg-background border border-border hover:shadow-md transition-shadow">
+            <div className="group rounded-xl overflow-hidden bg-background border border-border hover:border-primary hover:shadow-md transition-all">
               <div className="relative h-44" style={{ backgroundColor: p.color }}>
                 <span className="absolute bottom-3 left-3 bg-royal text-gold text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                   {p.sector}
@@ -278,24 +285,45 @@ const PortfolioPreview = () => (
 const vipClients = ["Kuwait Oil Company", "Central Bank of Kuwait", "Kuwait National Guard", "Jaber Al-Ahmad Stadium"];
 const regularClients = ["Ministry of Commerce", "Australian University", "Warba Bank", "Schlumberger", "Agility", "Al-Futtaim", "VIVA", "Environment Authority"];
 
-const Clients = () => (
-  <section className="py-20">
-    <div className="container">
-      <AnimatedSection><SectionLabel>Our Clients</SectionLabel></AnimatedSection>
-      <AnimatedSection delay={100}><h2 className="text-3xl md:text-4xl mb-8">Trusted by Kuwait's Leading Organizations</h2></AnimatedSection>
-      <AnimatedSection delay={200}>
-        <div className="flex flex-wrap gap-3">
-          {vipClients.map((c) => (
-            <span key={c} className="bg-royal text-gold text-sm font-semibold px-4 py-2 rounded-full">{c}</span>
+const Clients = () => {
+  const { ref, inView } = useInView();
+  return (
+    <section className="py-20">
+      <div className="container">
+        <AnimatedSection><SectionLabel>Our Clients</SectionLabel></AnimatedSection>
+        <AnimatedSection delay={100}><h2 className="text-3xl md:text-4xl mb-8">Trusted by Kuwait's Leading Organizations</h2></AnimatedSection>
+        <div ref={ref} className="flex flex-wrap gap-3">
+          {vipClients.map((c, i) => (
+            <span
+              key={c}
+              className="bg-royal text-gold text-sm font-semibold px-4 py-2 rounded-full"
+              style={{
+                opacity: inView ? 1 : 0,
+                transform: inView ? "translateY(0)" : "translateY(12px)",
+                transition: `opacity 0.4s ease-out ${i * 0.08}s, transform 0.4s ease-out ${i * 0.08}s`,
+              }}
+            >
+              {c}
+            </span>
           ))}
-          {regularClients.map((c) => (
-            <span key={c} className="border border-border text-foreground text-sm px-4 py-2 rounded-full">{c}</span>
+          {regularClients.map((c, i) => (
+            <span
+              key={c}
+              className="border border-border text-foreground text-sm px-4 py-2 rounded-full hover:border-primary transition-colors"
+              style={{
+                opacity: inView ? 1 : 0,
+                transform: inView ? "translateY(0)" : "translateY(12px)",
+                transition: `opacity 0.4s ease-out ${(vipClients.length + i) * 0.08}s, transform 0.4s ease-out ${(vipClients.length + i) * 0.08}s`,
+              }}
+            >
+              {c}
+            </span>
           ))}
         </div>
-      </AnimatedSection>
-    </div>
-  </section>
-);
+      </div>
+    </section>
+  );
+};
 
 /* ─── CONTACT CTA ─── */
 const ContactCTA = () => (
@@ -329,7 +357,7 @@ const ContactCTA = () => (
           href="https://wa.me/96522281292"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-hover inline-flex items-center gap-2 mt-8 bg-[#22c55e] text-background font-semibold text-sm px-6 py-3 rounded-[9px] hover:opacity-90 transition-opacity self-start"
+          className="btn-hover inline-flex items-center gap-2 mt-8 bg-[#22c55e] text-white font-semibold text-sm px-6 py-3 rounded-[9px] hover:opacity-90 transition-opacity self-start"
         >
           WhatsApp Us
         </a>
