@@ -21,25 +21,27 @@ const ContactPage = () => (
               <input placeholder="Your Name" className="w-full border border-border text-sm px-4 py-3 rounded-lg outline-none focus:ring-1 focus:ring-primary" />
               <input placeholder="Company" className="w-full border border-border text-sm px-4 py-3 rounded-lg outline-none focus:ring-1 focus:ring-primary" />
             </div>
-            <select className="w-full border border-border text-sm px-4 py-3 rounded-lg outline-none focus:ring-1 focus:ring-primary text-muted-foreground">
+            <select className="w-full border border-border text-sm px-4 py-3 rounded-lg outline-none focus:ring-1 focus:ring-primary text-muted-foreground bg-background">
               <option value="">Select Industry</option>
               <option>Government</option>
-              <option>Oil & Gas</option>
+              <option>Oil &amp; Gas</option>
               <option>Healthcare</option>
               <option>Education</option>
               <option>Banking</option>
               <option>Retail</option>
+              <option>Industrial</option>
               <option>Other</option>
             </select>
-            <select className="w-full border border-border text-sm px-4 py-3 rounded-lg outline-none focus:ring-1 focus:ring-primary text-muted-foreground">
+            <select className="w-full border border-border text-sm px-4 py-3 rounded-lg outline-none focus:ring-1 focus:ring-primary text-muted-foreground bg-background">
               <option value="">Service Interested In</option>
-              <option>Security & Safety</option>
+              <option>Security &amp; Safety</option>
               <option>Infrastructure</option>
               <option>Audio Visual</option>
               <option>Fit-Out</option>
               <option>Managed Services</option>
               <option>PMO</option>
               <option>Maintenance</option>
+              <option>HSE</option>
               <option>Control Rooms</option>
             </select>
             <textarea rows={5} placeholder="Tell us about your project..." className="w-full border border-border text-sm px-4 py-3 rounded-lg outline-none resize-none focus:ring-1 focus:ring-primary" />

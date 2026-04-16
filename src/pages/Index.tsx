@@ -1,4 +1,4 @@
-import { Shield, Monitor, Lock, Wifi, Tv, Paintbrush, Wrench, BarChart3, Headphones, Award } from "lucide-react";
+import { Shield, Monitor, Lock, Wifi, Tv, Paintbrush, Wrench, BarChart3, Headphones, Award, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
 import SectionLabel from "../components/SectionLabel";
 import AnimatedSection from "../components/AnimatedSection";
@@ -54,7 +54,7 @@ const Hero = () => (
         <div className="border-t border-border pt-5 flex flex-wrap gap-6 text-center">
           <StatItem target={18} suffix="+" label="Years" />
           <StatItem target={200} suffix="+" label="Projects" />
-          <StatItem target={7} suffix="" label="Divisions" />
+          <StatItem target={8} suffix="" label="Divisions" />
           <StatItem target={30} suffix="+" label="Partners" />
           <StatItem target={4} suffix="" label="ISO Certs" />
         </div>
@@ -152,6 +152,7 @@ const divisions = [
   { icon: Wrench, name: "Managed Services", desc: "MEP · Operations · FM" },
   { icon: BarChart3, name: "PMO", desc: "PMP Certified · Governance" },
   { icon: Headphones, name: "Maintenance", desc: "24/7 IT & Security Support" },
+  { icon: ShieldCheck, name: "HSE", desc: "HSE Consulting · Risk Assessment · Compliance" },
   { icon: Monitor, name: "Control Rooms", desc: "ISO-Standard Command Centers", featured: true },
 ];
 
@@ -159,7 +160,7 @@ const Divisions = () => (
   <section className="py-20">
     <div className="container">
       <AnimatedSection><SectionLabel>Our Divisions</SectionLabel></AnimatedSection>
-      <AnimatedSection delay={100}><h2 className="text-3xl md:text-4xl mb-10">Seven Specializations. One Company.</h2></AnimatedSection>
+      <AnimatedSection delay={100}><h2 className="text-3xl md:text-4xl mb-10">Eight Specializations. One Company.</h2></AnimatedSection>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {divisions.map((d, i) => (
           <AnimatedSection key={d.name} delay={i * 100}>

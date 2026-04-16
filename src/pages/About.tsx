@@ -11,7 +11,7 @@ const stats = [
 const timeline = [
   { year: "2007", event: "Company founded in Kuwait" },
   { year: "2012", event: "Security, Infrastructure, Services divisions launched" },
-  { year: "2013", event: "PMO, AV, Fit-Out, Maintenance added" },
+  { year: "2013", event: "PMO, AV, Fit-Out, Maintenance and HSE divisions added" },
   { year: "Today", event: "200+ projects, GCC market leader" },
 ];
 
@@ -34,7 +34,7 @@ const teamCerts = [
 const reasons = [
   { icon: Users, title: "Certified Global Partners", desc: "30+ world-leading brands" },
   { icon: Clock, title: "24/7/365 Support", desc: "Always available" },
-  { icon: Building, title: "All 7 Divisions In-House", desc: "One team, one contract" },
+  { icon: Building, title: "All 8 Divisions In-House", desc: "One team, one contract" },
   { icon: CheckCircle, title: "Proven Track Record", desc: "200+ projects" },
   { icon: Award, title: "ISO Certified Company", desc: "4 certifications" },
   { icon: Star, title: "Loyal Clients Are Our Asset", desc: "High repeat business rate" },
@@ -155,13 +155,13 @@ const AboutPage = () => (
             WhatsApp Us
           </a>
         </div>
-        <div className="rounded-xl overflow-hidden min-h-[300px]">
+        <div className="rounded-xl overflow-hidden" style={{ borderRadius: 12 }}>
           <iframe
             title="Royal Engineering Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3477.9!2d47.97!3d29.37!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDIyJzEyLjAiTiA0N8KwNTgnMTIuMCJF!5e0!3m2!1sen!2skw!4v1!5m2!1sen!2skw"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3477.9!2d47.9774!3d29.3759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDIyJzMzLjIiTiA0N8KwNTgnMzguNiJF!5e0!3m2!1sen!2skw!4v1!5m2!1sen!2skw"
             width="100%"
-            height="100%"
-            style={{ border: 0, minHeight: 300 }}
+            height="280"
+            style={{ border: 0 }}
             allowFullScreen
             loading="lazy"
           />
