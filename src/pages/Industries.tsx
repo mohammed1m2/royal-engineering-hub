@@ -1,5 +1,5 @@
 import { Building, Droplets, Heart, GraduationCap, Landmark, ShoppingBag, Factory, Train, Calendar, Zap } from "lucide-react";
-import SectionLabel from "../components/SectionLabel";
+import AnimatedSection from "../components/AnimatedSection";
 
 const industries = [
   { icon: Building, name: "Government", desc: "Secure, scalable solutions for ministries and public authorities.", solutions: "Control Rooms · Security · Infrastructure" },
@@ -18,20 +18,22 @@ const IndustriesPage = () => (
   <>
     <section className="bg-royal py-20">
       <div className="container text-center max-w-3xl">
-        <h1 className="text-4xl md:text-5xl text-primary-foreground mb-4">Industries We Serve</h1>
-        <p className="text-primary-foreground/60">Tailored engineering solutions for every sector across Kuwait and the GCC.</p>
+        <h1 className="text-4xl md:text-5xl text-primary-foreground mb-4" style={{ animation: "fade-slide-up 0.7s ease-out both" }}>Industries We Serve</h1>
+        <p className="text-primary-foreground/60" style={{ animation: "fade-slide-up 0.7s ease-out 0.1s both" }}>Tailored engineering solutions for every sector across Kuwait and the GCC.</p>
       </div>
     </section>
     <section className="py-16">
       <div className="container">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {industries.map((ind) => (
-            <div key={ind.name} className="border border-border rounded-xl p-6 hover:border-primary hover:shadow-md transition-all group cursor-pointer">
-              <ind.icon size={28} className="text-primary mb-3 group-hover:text-gold transition-colors" strokeWidth={1.5} />
-              <h3 className="font-bold mb-1">{ind.name}</h3>
-              <p className="text-sm text-muted-foreground mb-3">{ind.desc}</p>
-              <p className="text-xs text-gold font-medium">{ind.solutions}</p>
-            </div>
+          {industries.map((ind, i) => (
+            <AnimatedSection key={ind.name} delay={i * 80}>
+              <div className="border border-border rounded-xl p-6 hover:border-primary hover:shadow-md transition-all group cursor-pointer">
+                <ind.icon size={28} className="text-primary mb-3 group-hover:text-gold transition-colors" strokeWidth={1.5} />
+                <h3 className="font-bold mb-1">{ind.name}</h3>
+                <p className="text-sm text-muted-foreground mb-3">{ind.desc}</p>
+                <p className="text-xs text-gold font-medium">{ind.solutions}</p>
+              </div>
+            </AnimatedSection>
           ))}
         </div>
       </div>

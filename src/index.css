@@ -76,10 +76,12 @@
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-.animate-marquee {
+.marquee-track {
+  display: flex;
+  width: max-content;
   animation: marquee 30s linear infinite;
 }
-.animate-marquee:hover {
+.marquee-track:hover {
   animation-play-state: paused;
 }
 
