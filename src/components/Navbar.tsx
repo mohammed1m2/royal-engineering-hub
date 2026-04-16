@@ -37,7 +37,7 @@ const Navbar = () => {
               {l.label}
             </Link>
           ))}
-          <span className="text-xs text-muted-foreground cursor-pointer">AR | EN</span>
+          
           <Link
             to="/contact"
             className="bg-royal text-gold text-sm font-semibold px-5 py-2 rounded-[9px] hover:opacity-90 transition-opacity"

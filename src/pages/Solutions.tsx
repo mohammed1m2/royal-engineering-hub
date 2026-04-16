@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { Monitor, Lock, Wifi, Tv, Paintbrush, Wrench, BarChart3, Headphones } from "lucide-react";
+import { Monitor, Lock, Wifi, Tv, Paintbrush, Wrench, BarChart3, Headphones, ShieldCheck } from "lucide-react";
 import SectionLabel from "../components/SectionLabel";
 
 const divisionsData = [
@@ -76,6 +76,15 @@ const divisionsData = [
     technologies: [],
     value: "Minimizing downtime with proactive maintenance and rapid response.",
   },
+  {
+    slug: "hse",
+    name: "Health, Safety & Environment (HSE)",
+    icon: ShieldCheck,
+    desc: "Comprehensive HSE consulting, risk assessment, and compliance services to ensure workplace safety and regulatory adherence.",
+    capabilities: ["HSE Consulting & Advisory", "Risk Assessment & Hazard Identification", "Safety Management Systems", "Regulatory Compliance & Auditing", "Emergency Response Planning", "HSE Training Programs", "Incident Investigation & Reporting"],
+    technologies: [],
+    value: "Ensuring the highest standards of health, safety, and environmental compliance across all operations.",
+  },
 ];
 
 const SolutionsIndex = () => (
@@ -83,7 +92,7 @@ const SolutionsIndex = () => (
     <section className="bg-royal py-20">
       <div className="container text-center max-w-3xl">
         <h1 className="text-4xl md:text-5xl text-primary-foreground mb-4">Our Solutions</h1>
-        <p className="text-primary-foreground/60">Seven specialized divisions delivering integrated engineering excellence across Kuwait and the GCC.</p>
+        <p className="text-primary-foreground/60">Eight specialized divisions delivering integrated engineering excellence across Kuwait and the GCC.</p>
       </div>
     </section>
     <section className="py-16">
