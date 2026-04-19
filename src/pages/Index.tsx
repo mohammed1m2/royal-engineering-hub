@@ -370,6 +370,10 @@ const ContactCTA = () => (
 /* ─── PAGE ─── */
 const HomePage = () => (
   <>
+    <SEO
+      title="Royal Engineering | Kuwait's Trusted Integrated Engineering Partner"
+      description="Kuwait's leading ISO-certified integrated engineering company. Security, Infrastructure, AV, Fit-Out, HSE, Control Rooms — all under one roof since 2007."
+    />
     <Hero />
     <IsoBar />
     <PartnersMarquee />

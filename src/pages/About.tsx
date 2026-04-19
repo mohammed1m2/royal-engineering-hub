@@ -1,6 +1,7 @@
 import { Shield, Award, MapPin, Phone, Mail, Users, Clock, Building, CheckCircle, Star } from "lucide-react";
 import SectionLabel from "../components/SectionLabel";
 import AnimatedSection from "../components/AnimatedSection";
+import SEO from "../components/SEO";
 import { useInView } from "@/hooks/useInView";
 import { useCountUp } from "@/hooks/useCountUp";
 
@@ -56,6 +57,10 @@ const reasons = [
 
 const AboutPage = () => (
   <>
+    <SEO
+      title="About Royal Engineering | 18 Years of Engineering Excellence in Kuwait"
+      description="Founded in 2007, Royal Engineering is Kuwait's ISO-certified integrated engineering leader with 200+ projects across government, oil & gas, banking, and more."
+    />
     {/* Hero */}
     <section className="bg-royal py-20">
       <div className="container text-center max-w-3xl">
