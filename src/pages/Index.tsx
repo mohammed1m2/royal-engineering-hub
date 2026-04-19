@@ -32,10 +32,10 @@ const Hero = () => (
           className="text-4xl md:text-5xl lg:text-[3.25rem] leading-tight mb-5"
           style={{ animation: "fade-slide-up 0.7s ease-out 0.1s both" }}
         >
-          Kuwait's Most Trusted Integrated Engineering Partner
+          Your Trusted Engineering Partner
         </h1>
         <p
-          className="text-muted-foreground mb-8 max-w-xl leading-relaxed"
+          className="text-muted-foreground mb-8 max-w-xl leading-relaxed shadow-none"
           style={{ animation: "fade-slide-up 0.7s ease-out 0.2s both" }}
         >
           Security &amp; Safety · Infrastructure · Audio Visual · Fit-Out · Managed Services · PMO · Maintenance — all under one roof since 2007.
