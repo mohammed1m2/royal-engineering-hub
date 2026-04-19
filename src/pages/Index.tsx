@@ -26,13 +26,13 @@ const Hero = () => (
           className="inline-flex items-center gap-2 bg-accent/10 text-gold text-xs font-semibold px-4 py-1.5 rounded-full mb-6"
           style={{ animation: "fade-slide-up 0.6s ease-out both" }}
         >
-          <Shield size={14} /> 4× ISO Certified · Established Kuwait 2007
+          <Shield size={14} /> 4× ISO Certified · Established  Kuwait 2007
         </div>
         <h1
           className="text-4xl md:text-5xl lg:text-[3.25rem] leading-tight mb-5"
           style={{ animation: "fade-slide-up 0.7s ease-out 0.1s both" }}
         >
-          Your Trusted Engineering Partner
+          Your Trusted  Engineering Partner
         </h1>
         <p
           className="text-muted-foreground mb-8 max-w-xl leading-relaxed shadow-none"
