@@ -419,9 +419,7 @@ const HomePage = () => (
     <ControlRoomFeature />
     <PortfolioPreview />
     <Clients />
-    <div className="py-20">
-      <ContactCTA />
-    </div>
+    <ContactCTA />
   </>
 );
 
