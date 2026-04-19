@@ -110,6 +110,7 @@ const SolutionDetail = () => {
 
   return (
     <>
+      <SEO title={`${division.name} | Royal Engineering Kuwait`} description={division.desc} />
       <section className="bg-royal py-20">
         <div className="container max-w-3xl">
           <Link to="/solutions" className="text-primary-foreground/50 text-sm hover:text-primary-foreground mb-4 inline-block">← All Solutions</Link>
