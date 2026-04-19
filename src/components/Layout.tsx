@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import PageTransition from "./PageTransition";
+import BackToTop from "./BackToTop";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -20,7 +21,9 @@ const Layout = () => (
       </PageTransition>
     </main>
     <Footer />
+    <BackToTop />
   </div>
 );
 
 export default Layout;
+

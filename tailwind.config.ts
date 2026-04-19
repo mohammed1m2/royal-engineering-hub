@@ -106,6 +106,7 @@ export default {
         "marquee": "marquee 30s linear infinite",
         "tile-glow": "tile-glow 2s ease-in-out infinite",
         "pulse-dot": "pulse-dot 1.5s ease-in-out infinite",
+        "float": "float 3s ease-in-out infinite",
       },
     },
   },
