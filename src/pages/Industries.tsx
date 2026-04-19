@@ -1,6 +1,5 @@
 import { Building, Droplets, Heart, GraduationCap, Landmark, ShoppingBag, Factory, Train, Calendar, Zap } from "lucide-react";
 import AnimatedSection from "../components/AnimatedSection";
-import SEO from "../components/SEO";
 
 const industries = [
   { icon: Building, name: "Government", desc: "Secure, scalable solutions for ministries and public authorities.", solutions: "Control Rooms · Security · Infrastructure" },
@@ -17,10 +16,6 @@ const industries = [
 
 const IndustriesPage = () => (
   <>
-    <SEO
-      title="Industries | Royal Engineering Kuwait — Government, Oil & Gas, Banking & More"
-      description="Royal Engineering serves 10+ industries across Kuwait & GCC: Government, Oil & Gas, Healthcare, Education, Banking, Retail, Industrial, Transit, Utilities."
-    />
     <section className="bg-royal py-20">
       <div className="container text-center max-w-3xl">
         <h1 className="text-4xl md:text-5xl text-primary-foreground mb-4" style={{ animation: "fade-slide-up 0.7s ease-out both" }}>Industries We Serve</h1>

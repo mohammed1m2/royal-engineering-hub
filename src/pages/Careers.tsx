@@ -1,7 +1,6 @@
 import { Award, Users, Rocket, Heart } from "lucide-react";
 import SectionLabel from "../components/SectionLabel";
 import AnimatedSection from "../components/AnimatedSection";
-import SEO from "../components/SEO";
 
 const values = [
   { icon: Rocket, title: "Innovation First", desc: "We embrace cutting-edge technology and forward-thinking solutions." },
@@ -19,10 +18,6 @@ const openPositions = [
 
 const CareersPage = () => (
   <>
-    <SEO
-      title="Careers | Join Royal Engineering Kuwait"
-      description="Build your career at Kuwait's leading integrated engineering company. Open roles in Security, Infrastructure, AV, PMO and more. ISO-certified employer."
-    />
     <section className="bg-royal py-20">
       <div className="container text-center max-w-3xl">
         <h1 className="text-4xl md:text-5xl text-primary-foreground mb-4" style={{ animation: "fade-slide-up 0.7s ease-out both" }}>Join Royal Engineering</h1>
