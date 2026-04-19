@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Linkedin, Instagram } from "lucide-react";
+import { LinkedinIcon, InstagramIcon } from "./SocialIcons";
 import logoImg from "@/assets/re-logo.png";
 
 const navLinks = [
@@ -34,10 +34,10 @@ const Footer = () => (
         <p className="text-xs">Kuwait's Leading Integrated Engineering Partner Since 2007</p>
         <div className="flex items-center gap-3">
           <a href="#" aria-label="LinkedIn" className="w-8 h-8 rounded-full border border-primary-foreground/15 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
-            <Linkedin size={14} />
+            <LinkedinIcon size={14} />
           </a>
           <a href="#" aria-label="Instagram" className="w-8 h-8 rounded-full border border-primary-foreground/15 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
-            <Instagram size={14} />
+            <InstagramIcon size={14} />
           </a>
         </div>
       </div>

@@ -1,6 +1,7 @@
-import { MapPin, Phone, Mail, Clock, Linkedin, Instagram } from "lucide-react";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import AnimatedSection from "../components/AnimatedSection";
 import SEO from "@/components/SEO";
+import { LinkedinIcon, InstagramIcon } from "@/components/SocialIcons";
 
 const inputClass = "w-full text-sm px-4 py-3 rounded-lg outline-none focus:ring-1 focus:ring-primary";
 const inputStyle: React.CSSProperties = {
@@ -145,10 +146,10 @@ const ContactPage = () => (
         <AnimatedSection delay={200}>
           <div className="flex items-center gap-3">
             <a href="#" aria-label="LinkedIn" className="btn-hover w-10 h-10 rounded-full bg-royal flex items-center justify-center text-gold hover:opacity-90 transition-opacity">
-              <Linkedin size={16} />
+              <LinkedinIcon size={16} />
             </a>
             <a href="#" aria-label="Instagram" className="btn-hover w-10 h-10 rounded-full bg-royal flex items-center justify-center text-gold hover:opacity-90 transition-opacity">
-              <Instagram size={16} />
+              <InstagramIcon size={16} />
             </a>
           </div>
         </AnimatedSection>
