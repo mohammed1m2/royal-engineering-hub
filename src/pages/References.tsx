@@ -16,7 +16,7 @@ const allProjects = [
 
 const sectors = ["All", "Government", "Oil & Gas", "Banking", "Education", "Fit-Out"];
 
-const PortfolioPage = () => {
+const ReferencesPage = () => {
   const [active, setActive] = useState("All");
   const filtered = active === "All" ? allProjects : allProjects.filter((p) => p.sector === active);
 
@@ -24,7 +24,7 @@ const PortfolioPage = () => {
     <>
       <section className="bg-royal py-20">
         <div className="container text-center max-w-3xl">
-          <h1 className="text-4xl md:text-5xl text-primary-foreground mb-4" style={{ animation: "fade-slide-up 0.7s ease-out both" }}>Our Portfolio</h1>
+          <h1 className="text-4xl md:text-5xl text-primary-foreground mb-4" style={{ animation: "fade-slide-up 0.7s ease-out both" }}>Our References</h1>
           <p className="text-primary-foreground/60" style={{ animation: "fade-slide-up 0.7s ease-out 0.1s both" }}>200+ projects delivered across Kuwait and the GCC.</p>
         </div>
       </section>
@@ -68,4 +68,4 @@ const PortfolioPage = () => {
   );
 };
 
-export default PortfolioPage;
+export default ReferencesPage;

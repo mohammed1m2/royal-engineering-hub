@@ -47,8 +47,8 @@ const Hero = () => (
           <Link to="/contact" className="btn-hover bg-royal text-primary-foreground text-sm font-semibold px-6 py-3 rounded-[9px]">
             Request Free Consultation
           </Link>
-          <Link to="/portfolio" className="btn-hover border border-border text-foreground text-sm font-semibold px-6 py-3 rounded-[9px] hover:bg-secondary transition-colors">
-            View Portfolio →
+          <Link to="/references" className="btn-hover border border-border text-foreground text-sm font-semibold px-6 py-3 rounded-[9px] hover:bg-secondary transition-colors">
+            View References →
           </Link>
         </div>
         <div
@@ -236,7 +236,7 @@ const ControlRoomFeature = () => (
           </ul>
         </AnimatedSection>
         <AnimatedSection delay={400}>
-          <Link to="/portfolio" className="btn-hover inline-flex bg-accent text-accent-foreground text-sm font-semibold px-6 py-3 rounded-[9px] hover:opacity-90 transition-opacity self-start">
+          <Link to="/references" className="btn-hover inline-flex bg-accent text-accent-foreground text-sm font-semibold px-6 py-3 rounded-[9px] hover:opacity-90 transition-opacity self-start">
             See All Projects →
           </Link>
         </AnimatedSection>
