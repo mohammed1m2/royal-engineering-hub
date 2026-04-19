@@ -2,6 +2,7 @@ import { Shield, Monitor, Lock, Wifi, Tv, Paintbrush, Wrench, BarChart3, Headpho
 import { Link } from "react-router-dom";
 import SectionLabel from "../components/SectionLabel";
 import AnimatedSection from "../components/AnimatedSection";
+import SEO from "../components/SEO";
 import { useInView } from "@/hooks/useInView";
 import { useCountUp } from "@/hooks/useCountUp";
 
