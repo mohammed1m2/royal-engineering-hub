@@ -5,7 +5,7 @@ const Footer = () => (
   <footer className="bg-royal text-primary-foreground/70 py-8">
     <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
       <div className="flex items-center gap-3">
-        <img src={logoImg} alt="Royal Engineering" className="h-8 w-auto brightness-0 invert" />
+        <img src={logoImg} alt="Royal Engineering" className="h-12 w-auto brightness-0 invert" />
         <p className="text-xs">© {new Date().getFullYear()} Royal Engineering. All rights reserved.</p>
       </div>
       <div className="flex items-center gap-6 text-xs">
