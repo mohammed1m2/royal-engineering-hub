@@ -327,40 +327,83 @@ const Clients = () => {
 
 /* ─── CONTACT CTA ─── */
 const ContactCTA = () => (
-  <section className="py-0">
-    <div className="container grid lg:grid-cols-2 gap-0">
-      <div className="bg-royal p-10 lg:p-14 rounded-l-xl lg:rounded-l-xl">
-        <h2 className="text-3xl font-extrabold text-primary-foreground mb-1">
-          Let's Build <span className="text-gold">Something Great</span>
-        </h2>
-        <p className="text-primary-foreground/60 text-sm mb-8">Tell us about your project and we'll get back to you within 24 hours.</p>
-        <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-          <div className="grid sm:grid-cols-2 gap-4">
-            <input placeholder="Your Name" className="w-full bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/30 text-sm px-4 py-3 rounded-lg outline-none focus:ring-1 focus:ring-accent" />
-            <input placeholder="Company" className="w-full bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/30 text-sm px-4 py-3 rounded-lg outline-none focus:ring-1 focus:ring-accent" />
-          </div>
-          <input placeholder="Email" type="email" className="w-full bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/30 text-sm px-4 py-3 rounded-lg outline-none focus:ring-1 focus:ring-accent" />
-          <textarea rows={4} placeholder="Tell us about your project..." className="w-full bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/30 text-sm px-4 py-3 rounded-lg outline-none resize-none focus:ring-1 focus:ring-accent" />
-          <button type="submit" className="btn-hover bg-accent text-accent-foreground font-semibold text-sm px-8 py-3 rounded-[9px] hover:opacity-90 transition-opacity">
-            Send Message
-          </button>
-        </form>
-      </div>
-      <div className="bg-background border border-l-0 border-border p-10 lg:p-14 rounded-r-xl flex flex-col justify-center">
-        <h3 className="font-extrabold text-xl mb-6">Get in Touch</h3>
-        <div className="space-y-4 text-sm">
-          <div><div className="font-semibold mb-1">Address</div><p className="text-muted-foreground">Kuwait City, Safat 13122</p></div>
-          <div><div className="font-semibold mb-1">Phone</div><p className="text-muted-foreground">+965 2228 1292</p></div>
-          <div><div className="font-semibold mb-1">Email</div><p className="text-muted-foreground">info@royaleng-me.com</p></div>
+  <section className="bg-background py-24 relative overflow-hidden">
+    {/* Decorative gold frame lines */}
+    <div className="absolute top-0 left-0 right-0 h-px bg-accent/40" />
+    <div className="absolute bottom-0 left-0 right-0 h-px bg-accent/40" />
+
+    <div className="container">
+      <AnimatedSection>
+        <div className="max-w-2xl mb-14">
+          <div className="w-12 h-0.5 bg-royal mb-5" />
+          <SectionLabel>Contact Us</SectionLabel>
+          <h2 className="text-3xl md:text-4xl mt-3 mb-4">
+            Let's Build <span className="text-gold">Something Great</span>
+          </h2>
+          <p className="text-muted-foreground leading-relaxed">
+            Tell us about your project and our team will get back to you within 24 hours.
+          </p>
         </div>
-        <a
-          href="https://wa.me/96522281292"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-hover inline-flex items-center gap-2 mt-8 bg-[#22c55e] text-white font-semibold text-sm px-6 py-3 rounded-[9px] hover:opacity-90 transition-opacity self-start"
-        >
-          WhatsApp Us
-        </a>
+      </AnimatedSection>
+
+      <div className="grid lg:grid-cols-2 gap-14 items-start">
+        {/* Left: Form */}
+        <AnimatedSection delay={100}>
+          <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <input
+                placeholder="Your Name"
+                className="w-full bg-surface text-foreground placeholder:text-muted-foreground/70 text-sm px-4 py-3 rounded-lg border border-border outline-none focus:border-accent transition-colors"
+              />
+              <input
+                placeholder="Company"
+                className="w-full bg-surface text-foreground placeholder:text-muted-foreground/70 text-sm px-4 py-3 rounded-lg border border-border outline-none focus:border-accent transition-colors"
+              />
+            </div>
+            <input
+              placeholder="Email"
+              type="email"
+              className="w-full bg-surface text-foreground placeholder:text-muted-foreground/70 text-sm px-4 py-3 rounded-lg border border-border outline-none focus:border-accent transition-colors"
+            />
+            <textarea
+              rows={5}
+              placeholder="Tell us about your project..."
+              className="w-full bg-surface text-foreground placeholder:text-muted-foreground/70 text-sm px-4 py-3 rounded-lg border border-border outline-none resize-none focus:border-accent transition-colors"
+            />
+            <button
+              type="submit"
+              className="btn-hover bg-accent text-royal font-extrabold text-sm px-8 py-3 rounded-[9px] hover:opacity-90 transition-opacity"
+            >
+              Send Message
+            </button>
+          </form>
+        </AnimatedSection>
+
+        {/* Right: Contact Details */}
+        <AnimatedSection delay={200}>
+          <div className="space-y-6">
+            <div className="border-l-2 border-accent pl-5">
+              <div className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-1">Address</div>
+              <p className="text-foreground">Kuwait City, Safat 13122</p>
+            </div>
+            <div className="border-l-2 border-accent pl-5">
+              <div className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-1">Phone</div>
+              <p className="text-foreground">+965 2228 1292</p>
+            </div>
+            <div className="border-l-2 border-accent pl-5">
+              <div className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-1">Email</div>
+              <p className="text-foreground">info@royaleng-me.com</p>
+            </div>
+            <a
+              href="https://wa.me/96522281292"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-hover inline-flex items-center gap-2 mt-4 bg-[#22c55e] text-white font-semibold text-sm px-6 py-3 rounded-[9px] hover:opacity-90 transition-opacity"
+            >
+              WhatsApp Us
+            </a>
+          </div>
+        </AnimatedSection>
       </div>
     </div>
   </section>
