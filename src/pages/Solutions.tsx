@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { Monitor, Lock, Wifi, Tv, Paintbrush, Wrench, BarChart3, Headphones, ShieldCheck } from "lucide-react";
 import SectionLabel from "../components/SectionLabel";
 import AnimatedSection from "../components/AnimatedSection";
+import SEO from "../components/SEO";
 
 const divisionsData = [
   {
@@ -71,6 +72,10 @@ const divisionsData = [
 
 const SolutionsIndex = () => (
   <>
+    <SEO
+      title="Solutions | Royal Engineering Kuwait — 8 Integrated Divisions"
+      description="Eight specialized divisions: Security, Infrastructure, AV, Fit-Out, Managed Services, PMO, Maintenance, HSE, Control Rooms. ISO-certified Kuwait engineering."
+    />
     <section className="bg-royal py-20">
       <div className="container text-center max-w-3xl">
         <h1 className="text-4xl md:text-5xl text-primary-foreground mb-4" style={{ animation: "fade-slide-up 0.7s ease-out both" }}>Our Solutions</h1>
@@ -105,6 +110,7 @@ const SolutionDetail = () => {
 
   return (
     <>
+      <SEO title={`${division.name} | Royal Engineering Kuwait`} description={division.desc} />
       <section className="bg-royal py-20">
         <div className="container max-w-3xl">
           <Link to="/solutions" className="text-primary-foreground/50 text-sm hover:text-primary-foreground mb-4 inline-block">← All Solutions</Link>

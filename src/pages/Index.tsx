@@ -2,6 +2,7 @@ import { Shield, Monitor, Lock, Wifi, Tv, Paintbrush, Wrench, BarChart3, Headpho
 import { Link } from "react-router-dom";
 import SectionLabel from "../components/SectionLabel";
 import AnimatedSection from "../components/AnimatedSection";
+import SEO from "../components/SEO";
 import { useInView } from "@/hooks/useInView";
 import { useCountUp } from "@/hooks/useCountUp";
 
@@ -369,6 +370,10 @@ const ContactCTA = () => (
 /* ─── PAGE ─── */
 const HomePage = () => (
   <>
+    <SEO
+      title="Royal Engineering | Kuwait's Trusted Integrated Engineering Partner"
+      description="Kuwait's leading ISO-certified integrated engineering company. Security, Infrastructure, AV, Fit-Out, HSE, Control Rooms — all under one roof since 2007."
+    />
     <Hero />
     <IsoBar />
     <PartnersMarquee />
